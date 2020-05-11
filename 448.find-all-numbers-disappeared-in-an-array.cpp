@@ -25,6 +25,16 @@ public:
             if (nums[i] > 0)
                 res.push_back(i + 1);
         return res;
+
+        // int n = nums.size();
+        // map<int, bool> s;
+        // for (auto &i : nums)
+        //     s[i] = true;
+        // vector<int> v;
+        // for (int i = 1; i <= n; i++)
+        //     if (!s[i])
+        //         v.push_back(i);
+        // return v;
     }
 };
 // @lc code=end
