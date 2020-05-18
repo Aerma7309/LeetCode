@@ -7,15 +7,13 @@
 // @lc code=start
 class Trie
 {
-    char ch;
     bool isTerminal;
     map<char, Trie *> h;
 
 public:
     /** Initialize your data structure here. */
-    Trie(char c='|')
+    Trie()
     {
-        ch = c;
         isTerminal = false;
     }
 
@@ -29,7 +27,7 @@ public:
                 curr = curr->h[i];
             else
             {
-                Trie *newNode = new Trie(i);
+                Trie *newNode = new Trie();
                 curr->h[i] = newNode;
                 curr = newNode;
             }
