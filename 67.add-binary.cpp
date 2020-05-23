@@ -28,7 +28,7 @@ public:
         while (len_a >= 0 and len_b >= 0)
         {
             int sum = (a[len_a] - '0') + (b[len_b] - '0') + carry;
-            res =  (char)(sum % 2 + '0') + res;
+            res = (char)(sum % 2 + '0') + res;
             carry = sum / 2;
             len_a--;
             len_b--;
