@@ -9,7 +9,7 @@ class Solution
 {
 public:
     vector<vector<int>> res;
-    void permuteHelper(vector<int> &nums, int s, int e)
+    void permuteHelper(vector<int> nums, int s, int e)
     {
         if (s == e)
         {
