@@ -10,21 +10,16 @@ class Solution
 public:
     int findPeakElement(vector<int> &nums)
     {
-        int lb = 0, ub = nums.size() - 1, mid, ans = -1;
-        while (lb <= ub)
+        int lb = 0, ub = nums.size() - 1, mid;
+        while (lb < ub)
         {
             mid = lb + (ub - lb) / 2;
-            if (lb == ub)
-            {
-                ans = lb;
-                break;
-            }
-            else if (nums[mid] < nums[mid + 1])
+            if (nums[mid] < nums[mid + 1])
                 lb = mid + 1;
             else
                 ub = mid;
         }
-        return ans;
+        return lb;
     }
 };
 // @lc code=end
