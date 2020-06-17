@@ -11,19 +11,16 @@ public:
     int findMin(vector<int> &nums)
     {
         int lb = 0, ub = nums.size() - 1, mid;
-        if (nums[lb] <= nums[ub])
-            return nums[lb];
         while (lb < ub)
         {
             mid = lb + (ub - lb) / 2;
-            if (nums[mid] > nums[mid + 1])
-                return nums[mid + 1];
-            else if (nums[mid] > nums[lb])
-                lb = mid + 1;
-            else
+            if (nums[mid] < nums.back())
                 ub = mid;
+
+            else
+                lb = mid + 1;
         }
-        return -1;
+        return nums[lb];
     }
 };
 // @lc code=end
