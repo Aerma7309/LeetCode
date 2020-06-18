@@ -22,5 +22,21 @@ public:
             res.emplace_back(i.second);
         return res;
     }
+
+    // vector<vector<string>> groupAnagrams(vector<string> &strs)
+    // {
+    //     vector<vector<string>> res;
+    //     map<map<char, int>, vector<string>> m;
+    //     for (auto &i : strs)
+    //     {
+    //         map<char, int> tm;
+    //         for (auto &ch : i)
+    //             tm[ch]++;
+    //         m[tm].emplace_back(i);
+    //     }
+    //     for (auto &i : m)
+    //         res.emplace_back(i.second);
+    //     return res;
+    // }
 };
 // @lc code=end
