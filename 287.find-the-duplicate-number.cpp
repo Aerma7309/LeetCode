@@ -8,17 +8,30 @@
 class Solution
 {
 public:
+    // int findDuplicate(vector<int> &nums)
+    // {
+    //     set<int> s;
+    //     for (auto &i : nums)
+    //     {
+    //         if (s.find(i) == s.end())
+    //             s.emplace(i);
+    //         else
+    //             return i;
+    //     }
+    //     return -1;
+    // }
+
     int findDuplicate(vector<int> &nums)
     {
-        set<int> s;
-        for (auto &i : nums)
+        int i;
+        for (i = 0; i < nums.size(); i++)
         {
-            if (s.find(i) == s.end())
-                s.emplace(i);
+            if (nums[abs(nums[i])] > 0)
+                nums[abs(nums[i])] *= (-1);
             else
-                return i;
+                break;
         }
-        return -1;
+        return abs(nums[i]);
     }
 };
 // @lc code=end
