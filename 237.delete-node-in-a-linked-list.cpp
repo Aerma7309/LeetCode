@@ -13,20 +13,22 @@
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
+int FastIO = []() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
+    return 0;
+}();
+
 class Solution
 {
 public:
     void deleteNode(ListNode *node)
     {
-        ListNode *temp = node;
-        while (temp->next and temp->next->next)
-        {
-            swap(temp->val, temp->next->val);
-            temp = temp->next;
-        }
-        swap(temp->val, temp->next->val);
-        delete (temp->next);
-        temp->next = nullptr;
+        ListNode *temp = node->next;
+        node->val = temp->val;
+        node->next = temp->next;
+        delete (temp);
     }
 };
 // @lc code=end
