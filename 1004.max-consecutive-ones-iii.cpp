@@ -10,8 +10,7 @@ public:
     int longestOnes(vector<int>& A, int K) {
         int i=0,j=0,size = A.size();
         for (i = 0; i < size; i++)
-        {
-            
+        {  
             if(A[i]==0) K--;
             if(K<0) 
             {
