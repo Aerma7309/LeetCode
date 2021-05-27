@@ -20,15 +20,14 @@ public:
         // }
         // return vector<int>{};
 
-        map<int, int> h;
+        map<int, int> m;
         for (int i = 0; i < nums.size(); i++)
         {
-            if (h.find(target - nums[i]) != h.end())
-                return vector<int>{h[target - nums[i]], i};
-            else
-                h[nums[i]] = i;
+            if (m.find(target - nums[i]) != m.end())
+                return {m[target - nums[i]], i};
+            m[nums[i]] = i;
         }
-        return vector<int>{};
+        return {};
     }
 };
 // @lc code=end
