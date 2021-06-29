@@ -37,28 +37,23 @@ public:
         int valid = 1;
         while (not q.empty() and valid > 0)
         {
-            int sz = q.size();
-            for (int i = 0; i < sz; i++)
+            TreeNode *node = q.front();
+            if (node)
             {
-                TreeNode *node = q.front();
-                if (node)
-                {
-                    ss << node->val << ' ';
-                    if (node->left)
-                        valid++;
-                    if (node->right)
-                        valid++;
-                    q.push(node->left);
-                    q.push(node->right);
-                }
-                else
-                    ss << "null ";
-                if (node)
-                    valid--;
-                q.pop();
+                ss << node->val << ' ';
+                if (node->left)
+                    valid++;
+                if (node->right)
+                    valid++;
+                q.push(node->left);
+                q.push(node->right);
             }
+            else
+                ss << "null ";
+            if (node)
+                valid--;
+            q.pop();
         }
-        // cout << ss.str();
         return ss.str();
     }
 
@@ -71,36 +66,28 @@ public:
         int curr = 0;
         while (ss >> s)
             v.emplace_back(s);
-
         TreeNode *root = nullptr;
         if (v[curr] != "null")
             root = new TreeNode(stoi(v[curr++]));
         q.push(root);
         while (not q.empty() and curr < v.size())
         {
-            int sz = q.size();
-            for (int i = 0; i < sz and curr < v.size(); i++)
+            TreeNode *node = q.front();
+            if (v[curr] != "null")
             {
-                TreeNode *node = q.front();
-                if (node)
-                {
-                    if (v[curr] != "null")
-                    {
-                        node->left = new TreeNode(stoi(v[curr]));
-                        q.push(node->left);
-                    }
-                    curr++;
-                    if (curr >= v.size())
-                        break;
-                    if (v[curr] != "null")
-                    {
-                        node->right = new TreeNode(stoi(v[curr]));
-                        q.push(node->right);
-                    }
-                    curr++;
-                }
-                q.pop();
+                node->left = new TreeNode(stoi(v[curr]));
+                q.push(node->left);
             }
+            curr++;
+            if (curr >= v.size())
+                break;
+            if (v[curr] != "null")
+            {
+                node->right = new TreeNode(stoi(v[curr]));
+                q.push(node->right);
+            }
+            curr++;
+            q.pop();
         }
         return root;
     }
