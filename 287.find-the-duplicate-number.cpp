@@ -23,15 +23,19 @@ public:
 
     int findDuplicate(vector<int> &nums)
     {
-        int i;
-        for (i = 0; i < nums.size(); i++)
+        int hare = 0, tortoise = 0;
+        do
         {
-            if (nums[abs(nums[i])] > 0)
-                nums[abs(nums[i])] *= (-1);
-            else
-                break;
-        }
-        return abs(nums[i]);
+            hare = nums[nums[hare]];
+            tortoise = nums[tortoise];
+        } while (hare != tortoise);
+        hare = 0;
+        do
+        {
+            hare = nums[hare];
+            tortoise = nums[tortoise];
+        } while (hare != tortoise);
+        return hare;
     }
 };
 // @lc code=end
