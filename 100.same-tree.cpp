@@ -21,7 +21,7 @@ class Solution
 public:
     bool isSameTree(TreeNode *p, TreeNode *q)
     {
-        if (p == q)
+        if (p == q) // this is for condition when they become nullptr
             return true;
         if (not p or not q)
             return false;
