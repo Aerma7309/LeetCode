@@ -1,11 +1,3 @@
-// @before-stub-for-debug-begin
-#include <vector>
-#include <string>
-#include "commoncppproblem21.h"
-
-using namespace std;
-// @before-stub-for-debug-end
-
 /*
  * @lc app=leetcode id=21 lang=cpp
  *
@@ -23,29 +15,21 @@ using namespace std;
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+struct ListNode;
 class Solution
 {
 public:
     ListNode *mergeTwoLists(ListNode *l1, ListNode *l2)
     {
-        ListNode *head = nullptr, *tail = nullptr;
+
         if (!l1)
             return l2;
         if (!l2)
             return l1;
-        if (l1->val < l2->val)
-        {
-            head = tail = l1;
-            l1 = l1->next;
-            // head->next = nullptr;
-        }
-        else
-        {
-            head = tail = l2;
-            l2 = l2->next;
-            // head->next = nullptr;
-        }
 
+        ListNode *dummy = new ListNode(-1), *tail;
+        tail = dummy;
+        
         while (l1 and l2)
         {
             if (l1->val < l2->val)
@@ -74,8 +58,8 @@ public:
             l2 = l2->next;
             tail = tail->next;
         }
-        tail->next = nullptr;
-        return head;
+
+        return dummy->next;
     }
 };
 // @lc code=end
