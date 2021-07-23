@@ -7,38 +7,51 @@
 using namespace std;
 // @lc code=start
 
-class Trie
-{
-private:
-    bool isTerminal;
-    map<char, Trie *> nodes;
+// class Trie
+// {
+// private:
+//     bool isTerminal;
+//     map<char, Trie *> nodes;
 
-public:
-    Trie() { isTerminal = false; };
-    ~Trie(){};
-    void insert(string word)
-    {
-        Trie *temp = this;
-        for (auto &ch : word)
-        {
-            if (temp->nodes.find(ch) == temp->nodes.end())
-                temp->nodes[ch] = new Trie();
-            temp = temp->nodes[ch];
-        }
-        temp->isTerminal = true;
-    }
-    string LongestCommonPrefix()
-    {
-        Trie *temp = this;
-        string ans = "";
-        while ((temp->nodes.size() == 1) and not temp->isTerminal)
-        {
-            ans.push_back(temp->nodes.begin()->first);
-            temp = temp->nodes[temp->nodes.begin()->first];
-        }
-        return ans;
-    }
-};
+// public:
+//     Trie() { isTerminal = false; };
+//     ~Trie(){};
+//     void insert(string word)
+//     {
+//         Trie *temp = this;
+//         for (auto &ch : word)
+//         {
+//             if (temp->nodes.find(ch) == temp->nodes.end())
+//                 temp->nodes[ch] = new Trie();
+//             temp = temp->nodes[ch];
+//         }
+//         temp->isTerminal = true;
+//     }
+//     string LongestCommonPrefix()
+//     {
+//         Trie *temp = this;
+//         string ans = "";
+//         while ((temp->nodes.size() == 1) and not temp->isTerminal)
+//         {
+//             ans.push_back(temp->nodes.begin()->first);
+//             temp = temp->nodes[temp->nodes.begin()->first];
+//         }
+//         return ans;
+//     }
+// };
+
+// class Solution
+// {
+
+// public:
+//     string longestCommonPrefix(vector<string> &strs)
+//     {
+//         Trie trie;
+//         for (auto &word : strs)
+//             trie.insert(word);
+//         return trie.LongestCommonPrefix();
+//     }
+// };
 
 class Solution
 {
@@ -46,10 +59,17 @@ class Solution
 public:
     string longestCommonPrefix(vector<string> &strs)
     {
-        Trie trie;
-        for (auto &word : strs)
-            trie.insert(word);
-        return trie.LongestCommonPrefix();
+        string ans = "";
+        int idx = 0;
+        for (auto &ch : strs[0])
+        {
+            for (auto &word : strs)
+                if (idx >= word.size() or word[idx] != ch)
+                    return ans;
+            ans.push_back(ch);
+            idx++;
+        }
+        return ans;
     }
 };
 // @lc code=end
