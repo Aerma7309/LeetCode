@@ -3,7 +3,8 @@
  *
  * [287] Find the Duplicate Number
  */
-
+#include <bits/stdc++.h>
+using namespace std;
 // @lc code=start
 class Solution
 {
@@ -21,21 +22,32 @@ public:
     //     return -1;
     // }
 
+    // int findDuplicate(vector<int> &nums)
+    // {
+    //     int hare = 0, tortoise = 0;
+    //     do
+    //     {
+    //         hare = nums[nums[hare]];
+    //         tortoise = nums[tortoise];
+    //     } while (hare != tortoise);
+    //     hare = 0;
+    //     do
+    //     {
+    //         hare = nums[hare];
+    //         tortoise = nums[tortoise];
+    //     } while (hare != tortoise);
+    //     return hare;
+    // }
+
     int findDuplicate(vector<int> &nums)
     {
-        int hare = 0, tortoise = 0;
-        do
+        int curr = 0;
+        while (nums[curr] > 0)
         {
-            hare = nums[nums[hare]];
-            tortoise = nums[tortoise];
-        } while (hare != tortoise);
-        hare = 0;
-        do
-        {
-            hare = nums[hare];
-            tortoise = nums[tortoise];
-        } while (hare != tortoise);
-        return hare;
+            nums[curr] *= -1;
+            curr = abs(nums[curr]);
+        }
+        return curr;
     }
 };
 // @lc code=end
